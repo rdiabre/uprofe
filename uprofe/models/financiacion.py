@@ -13,6 +13,23 @@ class financiacion(models.Model):
     empresa_id = fields.Many2one('uprofe.empresa', string="Empresa financiadora", required=True)
     persona_ids = fields.Many2many('uprofe.persona', string="Personas financiadas")
     
+    def action_print_class(self):
+        self.ensure_one()
+        report = self.env.ref('uprofe.action_uprofe_financiacion_report', raise_if_not_found=False)
+        if not report:
+            report = self.env['ir.actions.report'].search(
+                [('report_name','=','uprofe.uprofe_financiacion_template')], limit=1
+            )
+        
+        if not report:
+            from odoo.exceptions import UserError
+            raise UserError(
+                "No se encontró la accion del informe 'uprofe.action_uprofe_financiacion_report' "
+                "ni un reporte con report_name='uprofe.uprofe_financiacion_template'."
+            )
+        
+        return report.report_action(self)
+    
     @api.constrains('name')
     def _check_codigo_unico(self):
         for record in self:
