@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="uprofe_financiacion_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="doc.name" />
+                        <p><strong>Código: </strong> <span t-esc="doc.name" /></p>
+                        <p><strong>Importe: </strong> <span t-field="doc.fImporte" /></p>
+                        <p><strong>Fecha de concesión: </strong> <span t-field="doc.dFecha_concesion" /></p>
+                        <p>
+                            <strong>Empresa financiadora: </strong>
+                            <span t-esc="doc.empresa_id.name" />; CIF: <span t-esc="doc.empresa_id.sCif" />
+                        </p>
+                        <p>
+                            <strong>Proyecto asociado: </strong>
+                            <span t-esc="doc.proyecto_investigacion_id.sTitulo" />; Código: <span t-esc="doc.proyecto_investigacion_id.name" />
+                        </p>
+
+                        <div t-if="doc.persona_ids" class="row" style="margin-top:40px; font-weight: bold; font-size: 19px;">
+                            Personas financiadas
+                        </div>
+                        <div t-if="doc.persona_ids" id="personas_financiadas" class="row" style="margin-top: 10px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>DNI</th>
+                                        <th>Nombre completo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.persona_ids" t-as="persona">
+                                        <tr>
+                                            <td><p t-field="persona.sDni" /></td>
+                                            <td><p><span t-esc="persona.name"></span> <span t-esc="persona.sApellidos"></span></p></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
