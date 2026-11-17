@@ -16,6 +16,9 @@
         <field name="model">uprofe.financiacion</field>
         <field name="arch" type="xml">
             <form string="Financiaciones">
+                <header>
+                    <button name="action_print_class" string="Imprimir clase (PDF)" type="object" class="btn-primary"/>
+                </header>
                 <sheet layout="auto">
                     <group>
                         <field name="name" />

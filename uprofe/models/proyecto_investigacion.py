@@ -16,6 +16,23 @@ class proyecto_investigacion(models.Model):
     financiacion_ids = fields.One2many('uprofe.financiacion', 'proyecto_investigacion_id', "Financiaciones")
     publicacion_ids = fields.One2many('uprofe.publicacion', 'proyecto_investigacion_id', "Publicaciones")
     
+    def action_print_class(self):
+            self.ensure_one()
+            report = self.env.ref('uprofe.action_uprofe_proyecto_investigacion_report', raise_if_not_found=False)
+            if not report:
+                report = self.env['ir.actions.report'].search(
+                    [('report_name','=','uprofe.uprofe_proyecto_investigacion_template')], limit=1
+                )
+            
+            if not report:
+                from odoo.exceptions import UserError
+                raise UserError(
+                    "No se encontró la accion del informe 'uprofe.action_uprofe_proyecto_investigacion_report' "
+                    "ni un reporte con report_name='uprofe.uprofe_proyecto_investigacion_template'."
+                )
+            
+            return report.report_action(self)
+    
     @api.constrains('name')
     def _check_codigo_unico(self):
         for record in self:
