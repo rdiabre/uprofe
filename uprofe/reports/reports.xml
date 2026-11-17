@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record>
+    <record id="action_uprofe_financiacion_report" model="ir.actions.report">
         <field name="name">Informe</field>
         <field name="model">uprofe.financiacion</field>
         <field name="report_type">qweb-pdf</field>
@@ -10,7 +10,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <record>
+    <record id="action_uprofe_proyecto_investigacion_report" model="ir.actions.report">
         <field name="name">Informe</field>
         <field name="model">uprofe.proyecto_investigacion</field>
         <field name="report_type">qweb-pdf</field>
