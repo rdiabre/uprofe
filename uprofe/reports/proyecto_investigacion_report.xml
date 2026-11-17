@@ -9,8 +9,8 @@
                         <p><strong>Título: </strong> <span t-esc="doc.sTitulo" /></p>
                         <p><strong>Presupuesto: </strong> <span t-esc="doc.fPresupuesto" /></p>
                         <p><strong>Título: </strong> <span t-esc="doc.sTitulo" /></p>
-                        <p><strong>Inicio: </strong> <span t-esc="doc.dFecha_inicio" /></p>
-                        <p><strong>Fin: </strong> <span t-esc="doc.dFecha_fin" /></p>
+                        <p><strong>Inicio: </strong> <span t-field="doc.dFecha_inicio" /></p>
+                        <p><strong>Fin: </strong> <span t-field="doc.dFecha_fin" /></p>
 
                         <div t-if="doc.publicacion_ids" class="row" style="margin-top:40px; font-weight: bold; font-size: 19px;">
                             Publicaciones asociadas

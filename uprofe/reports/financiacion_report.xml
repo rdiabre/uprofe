@@ -7,7 +7,7 @@
                     <div class="page">
                         <h2 t-esc="doc.name" />
                         <p><strong>Código: </strong> <span t-esc="doc.name" /></p>
-                        <p><strong>Importe: </strong> <span t-field="doc.fImporte" /></p>
+                        <p><strong>Importe: </strong> <span t-esc="doc.fImporte" /></p>
                         <p><strong>Fecha de concesión: </strong> <span t-field="doc.dFecha_concesion" /></p>
                         <p>
                             <strong>Empresa financiadora: </strong>
