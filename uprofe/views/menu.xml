@@ -20,8 +20,8 @@
     <menuitem name="Másteres" id="master_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="master_list_action"/>
     <menuitem name="Planes de estudio" id="plan_estudio_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="plan_estudio_list_action"/>
     <menuitem name="Investigadores" id="investigador_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="investigador_list_action"/>
-    <menuitem name="Tribunales" id="tribunal_tf_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="tribunal_tf_list_action"/>
-
+    <menuitem name="Tribunales TFG" id="tribunal_tf_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="tribunal_tf_list_action"/>
+    <menuitem name="Defensas TFG" id="defensa_tf_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="defensa_tf_list_action"/>
 
     <menuitem name="Libros de investigación" id="libro_inv_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="libro_inv_list_action"/>
     <menuitem name="Aportaciones a congreso" id="congreso_menu" parent="uprofe_menu" groups="group_uprofe_manager" action="congreso_list_action"/>

@@ -27,8 +27,7 @@ class TribunalTF(models.Model):
     investigador_ids = fields.Many2many('uprofe.investigador', string="Investigadores")
 
     #un tribunal defiende una o muchas defensas y cada defensa tiene un solo tribunal
-    #descomentar cuando defensatf esté en el main
-    #defensa_tf_ids = fields.One2many('uprofe.defensa_tf', 'tribunal_tf_id', string="Defensas")
+    defensa_tf_ids = fields.One2many('uprofe.defensa_tf', 'tribunal_tf_id', string="Defensas")
 
     iNum_miembros = fields.Integer(string="Nº de miembros", compute='_compute_num_miembros')
 

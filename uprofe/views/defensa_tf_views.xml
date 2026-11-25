@@ -1,0 +1,77 @@
+<odoo>
+    <!-- List -->
+    <record id="view_defensa_tf_list" model="ir.ui.view">
+        <field name="name">uprofe.defensa_tf.list</field>
+        <field name="model">uprofe.defensa_tf</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sNum_defensa"/>
+                <field name="trabajo_final_id"/>
+                <field name="alumno_id"/>
+                <field name="tribunal_tf_id"/>
+                <field name="espacio_id"/>
+                <field name="dFecha"/>
+                <field name="fHora" widget="float_time"/>
+                <field name="fCalificacion"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_defensa_tf_form" model="ir.ui.view">
+        <field name="name">uprofe.defensa_tf.form</field>
+        <field name="model">uprofe.defensa_tf</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Datos de la defensa">
+                            <field name="sNum_defensa"/>
+                            <field name="dFecha"/>
+                            <field name="fHora" widget="float_time"/>
+                            <field name="fCalificacion"/>
+                        </group>
+                        <group string="Trabajo, tribunal y lugar">
+                            <field name="trabajo_final_id"/>
+                            <field name="alumno_id"/>
+                            <field name="tribunal_tf_id"/>
+                            <field name="espacio_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search -->
+    <record id="view_defensa_tf_search" model="ir.ui.view">
+        <field name="name">uprofe.defensa_tf.search</field>
+        <field name="model">uprofe.defensa_tf</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sNum_defensa"/>
+                <field name="trabajo_final_id"/>
+                <field name="alumno_id"/>
+                <field name="tribunal_tf_id"/>
+                <field name="espacio_id"/>
+                <field name="dFecha"/>
+                <filter name="filtro_sin_calificar" string="Sin calificar" domain="[('fCalificacion', '=', 0)]"/>
+                <group string="Agrupar por">
+                    <filter name="group_tribunal" string="Tribunal" context="{'group_by': 'tribunal_tf_id'}"/>
+                    <filter name="group_espacio" string="Espacio" context="{'group_by': 'espacio_id'}"/>
+                    <filter name="group_fecha" string="Fecha" context="{'group_by': 'dFecha'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="defensa_tf_list_action" model="ir.actions.act_window">
+        <field name="name">Defensas de trabajo final</field>
+        <field name="res_model">uprofe.defensa_tf</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Crea la primera defensa</p>
+        </field>
+    </record>
+</odoo>

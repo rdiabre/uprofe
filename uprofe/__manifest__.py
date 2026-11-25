@@ -122,6 +122,7 @@ Descripción del módulo
         'views/tipo_solicitud_views.xml',
         'views/trabajo_final_views.xml',
         'views/tribunal_tf_views.xml',
+        'views/defensa_tf_views.xml',
         'views/departamento_views.xml',
         'views/menu.xml'
     ],
