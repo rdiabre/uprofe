@@ -1,0 +1,83 @@
+<odoo>
+    <!-- List -->
+    <record id="view_grado_list" model="ir.ui.view">
+        <field name="name">uprofe.grado.list</field>
+        <field name="model">uprofe.grado</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sCod_titulacion"/>
+                <field name="name" string="Nombre"/>
+                <field name="selRama_conocimiento"/>
+                <field name="iCreditos_totales"/>
+                <field name="iDuracion_cursos"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_grado_form" model="ir.ui.view">
+        <field name="name">uprofe.grado.form</field>
+        <field name="model">uprofe.grado</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- Herencia de Titulación: se crea sola al guardar el grado -->
+                        <group string="Datos de la titulación">
+                            <field name="titulacion_id" invisible="1"/>
+                            <field name="sCod_titulacion"/>
+                            <field name="name" string="Nombre"/>
+                            <field name="iCreditos_totales"/>
+                            <field name="iDuracion_cursos"/>
+                            <field name="fCreditos_por_curso"/>
+                        </group>
+                        <!-- Campos propios -->
+                        <group string="Datos del grado">
+                            <field name="selRama_conocimiento"/>
+                            <field name="iNum_convenios"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Planes de estudio">
+                            <field name="plan_estudio_ids">
+                                <list>
+                                    <field name="sCurso_academico"/>
+                                    <field name="bEs_actual"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Convenios">
+                            <field name="convenio_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search -->
+    <record id="view_grado_search" model="ir.ui.view">
+        <field name="name">uprofe.grado.search</field>
+        <field name="model">uprofe.grado</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nombre"/>
+                <field name="sCod_titulacion"/>
+                <field name="selRama_conocimiento"/>
+                <group string="Agrupar por">
+                    <filter name="group_rama" string="Rama de conocimiento" context="{'group_by': 'selRama_conocimiento'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="grado_list_action" model="ir.actions.act_window">
+        <field name="name">Grados</field>
+        <field name="res_model">uprofe.grado</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Crea el primer grado</p>
+        </field>
+    </record>
+</odoo>

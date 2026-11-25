@@ -66,6 +66,8 @@ from . import espacio
 from . import laboratorio
 from . import sala_estudio
 from . import inventario
+from . import tribunal_tf
+from . import defensa_tf
 from . import objeto_inventariable
 from . import inventario_linea
 from . import incidencia

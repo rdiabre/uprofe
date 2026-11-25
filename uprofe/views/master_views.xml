@@ -1,0 +1,83 @@
+<odoo>
+    <!-- List -->
+    <record id="view_master_list" model="ir.ui.view">
+        <field name="name">uprofe.master.list</field>
+        <field name="model">uprofe.master</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sCod_titulacion"/>
+                <field name="name" string="Nombre"/>
+                <field name="selOrientacion"/>
+                <field name="iCreditos_totales"/>
+                <field name="iDuracion_cursos"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_master_form" model="ir.ui.view">
+        <field name="name">uprofe.master.form</field>
+        <field name="model">uprofe.master</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- Herencia de Titulación: se crea sola al guardar el máster -->
+                        <group string="Datos de la titulación">
+                            <field name="titulacion_id" invisible="1"/>
+                            <field name="sCod_titulacion"/>
+                            <field name="name" string="Nombre"/>
+                            <field name="iCreditos_totales"/>
+                            <field name="iDuracion_cursos"/>
+                            <field name="fCreditos_por_curso"/>
+                        </group>
+                        <!-- Campos propios -->
+                        <group string="Datos del máster">
+                            <field name="selOrientacion"/>
+                            <field name="iNum_convenios"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Planes de estudio">
+                            <field name="plan_estudio_ids">
+                                <list>
+                                    <field name="sCurso_academico"/>
+                                    <field name="bEs_actual"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Convenios">
+                            <field name="convenio_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search -->
+    <record id="view_master_search" model="ir.ui.view">
+        <field name="name">uprofe.master.search</field>
+        <field name="model">uprofe.master</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nombre"/>
+                <field name="sCod_titulacion"/>
+                <field name="selOrientacion"/>
+                <group string="Agrupar por">
+                    <filter name="group_orientacion" string="Orientación" context="{'group_by': 'selOrientacion'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="master_list_action" model="ir.actions.act_window">
+        <field name="name">Másteres</field>
+        <field name="res_model">uprofe.master</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Crea el primer máster</p>
+        </field>
+    </record>
+</odoo>
